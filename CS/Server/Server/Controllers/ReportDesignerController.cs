@@ -24,21 +24,29 @@ namespace Server.Controllers {
         public ActionResult GetReportDesignerModel(string reportUrl) {
             Response.AppendHeader("Access-Control-Allow-Origin", "*");
 
-            string modelJsonScript =
-                new ReportDesignerClientSideModelGenerator()
-                .GetJsonModelScript(
-                    reportUrl,                 // Obtain a report to open in the Report Designer on application start.
-                    GetAvailableDataSources(), // Obtain data sources that will be available in the Report Designer for adding to reports.
-                    "ReportDesigner/Invoke",   // The URI path of the controller action that processes requests from the Report Designer.
-                    "WebDocumentViewer/Invoke",// The URI path of the controller action that processes requests from the Web Document Viewer.
-                    "QueryBuilder/Invoke"      // The URI path of the controller action that processes requests from the Query Builder.
+            //string modelJsonScript =
+            //    new ReportDesignerClientSideModelGenerator()
+            //    .GetJsonModelScript(
+            //        reportUrl,                 // Obtain a report to open in the Report Designer on application start.
+            //        GetAvailableDataSources(), // Obtain data sources that will be available in the Report Designer for adding to reports.
+            //        "ReportDesigner/Invoke",   // The URI path of the controller action that processes requests from the Report Designer.
+            //        "WebDocumentViewer/Invoke",// The URI path of the controller action that processes requests from the Web Document Viewer.
+            //        "QueryBuilder/Invoke"      // The URI path of the controller action that processes requests from the Query Builder.
+            //    );
+
+            string modelJsonScript = new ReportDesignerClientSideModelGenerator().GetJsonModelScript(
+                    reportUrl,
+                    null,
+                    "ReportDesigner/Invoke",
+                    null,
+                    null
                 );
             return Content(modelJsonScript, "application/json");
         }
 
-        Dictionary<string, object> GetAvailableDataSources() {
+        Dictionary<string, object> GetAvailableDataSources()
+        {
             var dataSources = new Dictionary<string, object>();
-            //SqlDataSource ds = new SqlDataSource("Northwind_Connection");
             SqlDataSource ds = new SqlDataSource("NWindConnectionString");
             var query = SelectQueryFluentBuilder.AddTable("Products").SelectAllColumns().Build("Products");
             ds.Queries.Add(query);

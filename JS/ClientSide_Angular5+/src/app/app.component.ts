@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DXReportDesignerSample';
-  reportUrl = 'Products';
+  // reportUrl = 'Products';
+  reportUrl = '2';
+  // reportUrl = 'rpt2';
 }

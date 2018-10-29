@@ -8,8 +8,9 @@ import { Html } from 'devexpress-reporting/dx-report-designer';
 })
 
 export class ReportDesignerComponent implements AfterViewInit {
-  // koReportUrl = ko.observable(null);
-  koReportUrl = ko.observable('Products');
+  koReportUrl = ko.observable(null);
+  // koReportUrl = ko.observable('Products');
+  // koReportUrl = ko.observable('2');
   _reportUrl;
   constructor(private renderer: Renderer2) { }
 

@@ -31,6 +31,7 @@ namespace Server {
             ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
 
             DevExpress.Web.ASPxWebControl.CallbackError += Application_Error;
+            ReportStorageWebExtension.RegisterExtensionGlobal(new CustomReportStorageWebExtension());
         }
 
         protected void Application_Error(object sender, EventArgs e) {
