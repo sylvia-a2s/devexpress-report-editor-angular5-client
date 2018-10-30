@@ -36,10 +36,10 @@ namespace Server.Controllers {
 
             string modelJsonScript = new ReportDesignerClientSideModelGenerator().GetJsonModelScript(
                     reportUrl,
-                    null,
+                    null, // GetAvailableDataSources(), // Obtain data sources that will be available in the Report Designer for adding to reports.
                     "ReportDesigner/Invoke",
-                    null,
-                    null
+                    "WebDocumentViewer/Invoke",
+                    "QueryBuilder/Invoke"
                 );
             return Content(modelJsonScript, "application/json");
         }

@@ -9,9 +9,8 @@ import { Html } from 'devexpress-reporting/dx-report-designer';
 
 export class ReportDesignerComponent implements AfterViewInit {
   koReportUrl = ko.observable(null);
-  // koReportUrl = ko.observable('Products');
-  // koReportUrl = ko.observable('2');
   _reportUrl;
+  designerOptions;
   constructor(private renderer: Renderer2) { }
 
   @ViewChild('scripts')
@@ -22,17 +21,31 @@ export class ReportDesignerComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     const reportUrl = this.koReportUrl,
-      host = 'http://localhost:49595/',
-      container = this.renderer.createElement('div');
+    host = 'http://localhost:49595/',
+    container = this.renderer.createElement('div');
     container.innerHTML = Html;
     this.renderer.appendChild(this.scripts.nativeElement, container);
-    ko.applyBindings({
-      reportUrl, // The URL of a report that is opened in the Report Designer when the application starts.
+    this.designerOptions = {
+      reportUrl,
       requestOptions: { // Options for processing requests from the Report Designer.
         host, // URI of your backend project.
         getDesignerModelAction: '/ReportDesigner/GetReportDesignerModel' // Action that returns the Report Designer model.
-      }
-    }, this.control.nativeElement);
+     }
+    };
+    ko.applyBindings(this.designerOptions, this.control.nativeElement);
+  }
+
+  Reset() {
+    this.koReportUrl('2');
+    const reportUrl = this.koReportUrl,
+    host = 'http://localhost:49595/';
+    this.designerOptions = {
+      reportUrl,
+      requestOptions: { // Options for processing requests from the Report Designer.
+        host, // URI of your backend project.
+        getDesignerModelAction: '/ReportDesigner/GetReportDesignerModel' // Action that returns the Report Designer model.
+     }
+    };
   }
 
   @Input()
