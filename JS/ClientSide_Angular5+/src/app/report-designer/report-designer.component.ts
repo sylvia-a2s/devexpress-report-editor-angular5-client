@@ -37,15 +37,6 @@ export class ReportDesignerComponent implements AfterViewInit {
 
   Reset() {
     this.koReportUrl('2');
-    const reportUrl = this.koReportUrl,
-    host = 'http://localhost:49595/';
-    this.designerOptions = {
-      reportUrl,
-      requestOptions: { // Options for processing requests from the Report Designer.
-        host, // URI of your backend project.
-        getDesignerModelAction: '/ReportDesigner/GetReportDesignerModel' // Action that returns the Report Designer model.
-     }
-    };
   }
 
   @Input()
