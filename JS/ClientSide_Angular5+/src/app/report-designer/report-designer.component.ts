@@ -37,6 +37,7 @@ export class ReportDesignerComponent implements AfterViewInit {
 
   Reset() {
     this.koReportUrl('2');
+    // window.location.reload();
   }
 
   @Input()
