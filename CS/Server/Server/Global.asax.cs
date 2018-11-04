@@ -19,8 +19,8 @@ namespace Server {
             DevExpress.XtraReports.Web.WebDocumentViewer.Native.WebDocumentViewerBootstrapper.SessionState = System.Web.SessionState.SessionStateBehavior.Default;
             DevExpress.XtraReports.Web.QueryBuilder.Native.QueryBuilderBootstrapper.SessionState = System.Web.SessionState.SessionStateBehavior.Default;
             DevExpress.XtraReports.Web.ReportDesigner.Native.ReportDesignerBootstrapper.SessionState = System.Web.SessionState.SessionStateBehavior.Default;
-            ReportStorageWebExtension.RegisterExtensionGlobal(new ReportStorageWebExtension1());
-            ReportStorageWebExtension.RegisterExtensionGlobal(new MyReportStorage());
+            // ReportStorageWebExtension.RegisterExtensionGlobal(new ReportStorageWebExtension1());
+            // ReportStorageWebExtension.RegisterExtensionGlobal(new MyReportStorage());
             MVCxReportDesigner.StaticInitialize();
             AreaRegistration.RegisterAllAreas();
 
@@ -31,7 +31,8 @@ namespace Server {
             ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
 
             DevExpress.Web.ASPxWebControl.CallbackError += Application_Error;
-            ReportStorageWebExtension.RegisterExtensionGlobal(new CustomReportStorageWebExtension());
+            // ReportStorageWebExtension.RegisterExtensionGlobal(new CustomReportStorageWebExtension());
+            DevExpress.XtraReports.Web.Extensions.ReportStorageWebExtension.RegisterExtensionGlobal(new MyReportStorageWebExtension());
         }
 
         protected void Application_Error(object sender, EventArgs e) {

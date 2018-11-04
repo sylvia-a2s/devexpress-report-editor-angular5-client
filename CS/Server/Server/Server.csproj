@@ -235,12 +235,10 @@
     <Compile Include="Controllers\QueryBuilderController.cs" />
     <Compile Include="Controllers\ReportDesignerController.cs" />
     <Compile Include="Controllers\WebDocumentViewerController.cs" />
-    <Compile Include="CustomReportStorageWebExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MyReportStorage.cs" />
-    <Compile Include="ReportStorageWebExtension.cs" />
+    <Compile Include="MyReportStorageWebExtension.cs" />
     <Compile Include="XtraReport1.cs">
       <SubType>Component</SubType>
     </Compile>

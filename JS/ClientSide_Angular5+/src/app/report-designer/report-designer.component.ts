@@ -11,6 +11,7 @@ export class ReportDesignerComponent implements AfterViewInit {
   koReportUrl = ko.observable(null);
   _reportUrl;
   designerOptions;
+  testnum = 3;
   constructor(private renderer: Renderer2) { }
 
   @ViewChild('scripts')
@@ -36,8 +37,7 @@ export class ReportDesignerComponent implements AfterViewInit {
   }
 
   Reset() {
-    this.koReportUrl('2');
-    // window.location.reload();
+    this.koReportUrl(this.testnum);
   }
 
   @Input()
